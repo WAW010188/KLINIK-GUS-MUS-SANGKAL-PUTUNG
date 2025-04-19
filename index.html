@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klinik Patah Tulang Gus Mus</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link ke file CSS -->
+</head>
+<body>
+    <header>
+        <h1>Klinik Patah Tulang Gus Mus</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#registration">Pendaftaran</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h2>Selamat Datang di Klinik Patah Tulang Gus Mus</h2>
+        <p>Informasi mengenai layanan dan fasilitas yang kami tawarkan.</p>
+        <!-- Tambahkan informasi lebih lanjut tentang klinik di sini -->
+    </section>
+
+    <section id="registration">
+        <h2>Form Pendaftaran</h2>
+        <form id="registrationForm" action="https://api.whatsapp.com/send?phone=6282323233678&text=Pesan" method="get" target="_blank">
+            <label for="noReg">No Reg:</label>
+            <input type="text" id="noReg" name="noReg" required>
+
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama" name="nama" required>
+
+            <label for="ttl">Tempat/Tanggal Lahir:</label>
+            <input type="text" id="ttl" name="ttl" required>
+
+            <label for="jenisKelamin">Jenis Kelamin:</label>
+            <select id="jenisKelamin" name="jenisKelamin" required>
+                <option value="Laki-laki">Laki-laki</option>
+                <option value="Perempuan">Perempuan</option>
+            </select>
+
+            <label for="alamat">Alamat Lengkap:</label>
+            <textarea id="alamat" name="alamat" required></textarea>
+
+            <label for="noTelepon">No Telepon Pasien:</label>
+            <input type="text" id="noTelepon" name="noTelepon" required>
+
+            <label for="noIdentitas">No KTP/SIM/Paspor:</label>
+            <input type="text" id="noIdentitas" name="noIdentitas" required>
+
+            <label for="statusPerkawinan">Status Perkawinan:</label>
+            <select id="statusPerkawinan" name="statusPerkawinan" required>
+                <option value="Belum Menikah">Belum Menikah</option>
+                <option value="Menikah">Menikah</option>
+                <option value="Cerai">Cerai</option>
+            </select>
+
+            <label for="tanggalKejadian">Tanggal Kejadian:</label>
+            <input type="date" id="tanggalKejadian" name="tanggalKejadian" required>
+
+            <label for="statusPerawatan">Status Perawatan:</label>
+            <input type="text" id="statusPerawatan" name="statusPerawatan" required>
+
+            <label for="keteranganPatahTulang">Keterangan Patah Tulang:</label>
+            <textarea id="keteranganPatahTulang" name="keteranganPatahTulang" required></textarea>
+
+            <h3>Penanggung Jawab Pasien</h3>
+            <label for="namaPenanggungJawab">Nama Lengkap:</label>
+            <input type="text" id="namaPenanggungJawab" name="namaPenanggungJawab" required>
+
+            <label for="ttlPenanggungJawab">Tempat/Tanggal Lahir:</label>
+            <input type="text" id="ttlPenanggungJawab" name="ttlPenanggungJawab" required>
+
+            <label for="hubungan">Hubungan ke Pasien:</label>
+            <input type="text" id="hubungan" name="hubungan" required>
+
+            <label for="alamatPenanggungJawab">Alamat:</label>
+            <textarea id="alamatPenanggungJawab" name="alamatPenanggungJawab" required></textarea>
+
+            <label for="noTeleponPenanggungJawab">No Telepon:</label>
+            <input type="text" id="noTeleponPenanggungJawab" name="noTeleponPenanggungJawab" required>
+
+            <button type="submit">Kirim Pendaftaran</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Klinik Patah Tulang Gus Mus. Semua hak dilindungi.</p>
+    </footer>
+</body>
+</html>
