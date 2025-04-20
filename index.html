@@ -3,29 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Klinik Patah Tulang Gus Mus</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link ke file CSS -->
-<header>
-    <div style="display: flex; align-items: center;">
-        <img src="gm.png.jpg" alt="Logo Klinik Patah Tulang" style="width: 100px; height: auto; margin-right: 10px;">
-        <h1>Klinik Patah Tulang Gus Mus</h1>
-    </div>
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#registration">Pendaftaran</a></li>
-        </ul>
-    </nav>
-</header>
-    <section id="home">
-        <h2>Selamat Datang di Klinik Patah Tulang Gus Mus</h2>
-        <p>Informasi mengenai layanan dan fasilitas yang kami tawarkan.</p>
-        <!-- Tambahkan informasi lebih lanjut tentang klinik di sini -->
-    </section>
-
+    <title>Pendaftaran Klinik Patah Tulang</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
     <section id="registration">
         <h2>Form Pendaftaran</h2>
-        <form id="registrationForm" action="https://api.whatsapp.com/send?phone=6282323233678&text=Pesan" method="get" target="_blank">
+        <form id="registrationForm" onsubmit="generatePDF(event)">
             <label for="noReg">No Reg:</label>
             <input type="text" id="noReg" name="noReg" required>
 
@@ -34,6 +18,9 @@
 
             <label for="ttl">Tempat/Tanggal Lahir:</label>
             <input type="text" id="ttl" name="ttl" required>
+
+            <label for="umur">Umur:</label>
+            <input type="text" id="umur" name="umur" required>
 
             <label for="jenisKelamin">Jenis Kelamin:</label>
             <select id="jenisKelamin" name="jenisKelamin" required>
@@ -54,14 +41,16 @@
             <select id="statusPerkawinan" name="statusPerkawinan" required>
                 <option value="Belum Menikah">Belum Menikah</option>
                 <option value="Menikah">Menikah</option>
-                <option value="Cerai">Cerai</option>
             </select>
 
             <label for="tanggalKejadian">Tanggal Kejadian:</label>
             <input type="date" id="tanggalKejadian" name="tanggalKejadian" required>
 
             <label for="statusPerawatan">Status Perawatan:</label>
-            <input type="text" id="statusPerawatan" name="statusPerawatan" required>
+            <select id="statusPerawatan" name="statusPerawatan" required>
+                <option value="Rawat Jalan">Rawat Jalan</option>
+                <option value="Rawat Inap">Rawat Inap</option>
+            </select>
 
             <label for="keteranganPatahTulang">Keterangan Patah Tulang:</label>
             <textarea id="keteranganPatahTulang" name="keteranganPatahTulang" required></textarea>
@@ -86,8 +75,59 @@
         </form>
     </section>
 
-    <footer>
-        <p>&copy; 2023 Klinik Patah Tulang Gus Mus. Semua hak dilindungi.</p>
-    </footer>
+    <script>
+        async function generatePDF(event) {
+            event.preventDefault(); // Mencegah form dari pengiriman default
+
+            // Mengambil data dari form
+            const noReg = document.getElementById('noReg').value;
+            const nama = document.getElementById('nama').value;
+            const ttl = document.getElementById('ttl').value;
+            const umur = document.getElementById('umur').value;
+            const jenisKelamin = document.getElementById('jenisKelamin').value;
+            const alamat = document.getElementById('alamat').value;
+            const noTelepon = document.getElementById('noTelepon').value;
+            const noIdentitas = document.getElementById('noIdentitas').value;
+            const statusPerkawinan = document.getElementById('statusPerkawinan').value;
+            const tanggalKejadian = document.getElementById('tanggalKejadian').value;
+            const statusPerawatan = document.getElementById('statusPerawatan').value;
+            const keteranganPatahTulang = document.getElementById('keteranganPatahTulang').value;
+            const namaPenanggungJawab = document.getElementById('namaPenanggungJawab').value;
+            const ttlPenanggungJawab = document.getElementById('ttlPenanggungJawab').value;
+            const hubungan = document.getElementById('hubungan').value;
+            const alamatPenanggungJawab = document.getElementById('alamatPenanggungJawab').value;
+            const noTeleponPenanggungJawab = document.getElementById('noTeleponPenanggungJawab').value;
+
+            // Membuat PDF menggunakan jsPDF
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Menambahkan konten ke PDF
+            doc.setFontSize(16);
+            doc.text("Form Pendaftaran Pasien", 10, 10);
+            doc.setFontSize(12);
+            doc.text(`No Reg: ${noReg}`, 10, 20);
+            doc.text(`Nama: ${nama}`, 10, 30);
+            doc.text(`Tempat/Tanggal Lahir: ${ttl}`, 10, 40);
+            doc.text(`Umur: ${umur}`, 10, 50);
+            doc.text(`Jenis Kelamin: ${jenisKelamin}`, 10, 60);
+            doc.text(`Alamat: ${alamat}`, 10, 70);
+            doc.text(`No Telepon Pasien: ${noTelepon}`, 10, 80);
+            doc.text(`No Identitas: ${noIdentitas}`, 10, 90);
+            doc.text(`Status Perkawinan: ${statusPerkawinan}`, 10, 100);
+            doc.text(`Tanggal Kejadian: ${tanggalKejadian}`, 10, 110);
+            doc.text(`Status Perawatan: ${statusPerawatan}`, 10, 120);
+            doc.text(`Keterangan Patah Tulang: ${keteranganPatahTulang}`, 10, 130);
+            doc.text("Penanggung Jawab Pasien", 10, 140);
+            doc.text(`Nama: ${namaPenanggungJawab}`, 10, 150);
+            doc.text(`Tempat/Tanggal Lahir: ${ttlPenanggungJawab}`, 10, 160);
+            doc.text(`Hubungan: ${hubungan}`, 10, 170);
+            doc.text(`Alamat: ${alamatPenanggungJawab}`, 10, 180);
+            doc.text(`No Telepon: ${noTeleponPenanggungJawab}`, 10, 190);
+
+            // Mengunduh PDF
+            doc.save("Pendaftaran_Klinik_Patah_Tulang.pdf");
+        }
+    </script>
 </body>
 </html>
